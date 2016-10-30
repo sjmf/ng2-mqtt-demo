@@ -25,7 +25,7 @@ export const StateLookup: string[] = [
  * @description This service handles subscribing to a
  * message queue using the mqtt library, and returns
  * values via the ES6 Observable specification for
- * asynchronous value streaming by wiring messages 
+ * asynchronous value streaming by wiring messages
  * into a Subject observable.
  */
 @Injectable()
@@ -46,7 +46,7 @@ export class MQService implements TransportService {
     private client: Client;
 
     // Resolve Promise made to calling class, when connected
-    private resolvePromise: { (...args: any[]): void };
+    private resolvePromise: { (...args: any[]): void }; // assignable function
 
     /** Constructor */
     public constructor() {
@@ -63,7 +63,7 @@ export class MQService implements TransportService {
             throw Error("Already running!");
         if (config === null && this.config === null)
             throw Error("No configuration provided!");
-        
+
         // Set our configuration
         if(config != null)
             this.config = config;
@@ -74,12 +74,12 @@ export class MQService implements TransportService {
     }
 
 
-    /** 
+    /**
      * Perform connection to broker, returning a Promise
-     * which is resolved when connected. 
+     * which is resolved when connected.
      */
     public try_connect(): Promise<{}> {
-
+        console.log("try_connect");
         if(this.state.getValue() != TransportState.CLOSED)
             throw Error("Can't try_connect if not CLOSED!");
         if(this.client === null)
@@ -92,6 +92,7 @@ export class MQService implements TransportService {
         // Client options loaded from config
         var options: ClientOptions = {
             'keepalive' : this.config.keepalive,
+            'reconnectPeriod': 10000,
             'clientId' : 'clientid_' + Math.floor(Math.random()*65535),
             'username': this.config.user,
             'password': this.config.pass
@@ -102,7 +103,7 @@ export class MQService implements TransportService {
         this.client = connect(url, options);
 
         this.client.addListener('connect', this.on_connect);
-        this.client.addListener('reconnect', this.on_connect);
+        this.client.addListener('reconnect', this.on_reconnect);
         this.client.addListener('message', this.on_message);
         this.client.addListener('offline', this.on_error);
         this.client.addListener('error', this.on_error);
@@ -153,7 +154,7 @@ export class MQService implements TransportService {
     }
 
 
-    /** 
+    /**
      * Callback Functions
      *
      * Note the method signature: () => preserves lexical scope
@@ -167,6 +168,11 @@ export class MQService implements TransportService {
         }
     }
 
+    // Callback run on successfully connecting to server
+    public on_reconnect = () => {
+      console.info("on_reconnect");
+
+    }
 
     // Callback run on successfully connecting to server
     public on_connect = () => {
@@ -179,6 +185,7 @@ export class MQService implements TransportService {
         // Subscribe to message queues
         this.subscribe();
 
+        console.log(typeof this.resolvePromise);
         // Resolve our Promise to the caller
         this.resolvePromise();
 
@@ -190,8 +197,14 @@ export class MQService implements TransportService {
     // Handle errors
     public on_error = (error: any) => {
 
-        console.error("error handler called");
+        console.error("on_error");
         console.error(error);
+
+        if (typeof error === "undefined") {
+          this.debug("Undefined error");
+          this.state.next( TransportState.TRYING );
+          return;
+        }
 
         // Check for dropped connection and try reconnecting
         if (error.indexOf("Lost connection") != -1) {

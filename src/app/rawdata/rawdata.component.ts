@@ -44,7 +44,10 @@ export class RawDataComponent implements OnInit, OnDestroy {
             config => {
                 // ... then pass it to (and connect) the message queue:
                 this._mqService.configure(config);
-                this._mqService.try_connect().then(this.on_connect);
+                this._mqService.try_connect()
+                  .then(this.on_connect)
+                  .catch(this.on_error)
+                ;
             }
         );
     }
@@ -72,5 +75,9 @@ export class RawDataComponent implements OnInit, OnDestroy {
 
         // Count it
         this.count++;
+    }
+
+    public on_error = () => {
+      console.error("Ooops, error in RawDataComponent");
     }
 }
