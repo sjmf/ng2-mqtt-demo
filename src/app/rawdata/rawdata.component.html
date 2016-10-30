@@ -1,0 +1,21 @@
+<mq-status></mq-status>
+
+<div id="raw">
+
+    <h2>Messages</h2>
+    <p>{{count}} total</p>
+
+    <h3 *ngIf="count">Latest:</h3>
+    <pre>{{messages | async}}</pre>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span *ngIf="mq.length">History:</span>
+        </div>
+        <div class="panel-body" class="debug-mq-panel">
+            <ol reversed>
+                <li *ngFor="let m of mq | reverse "><pre>{{m}}</pre></li>
+            </ol>
+        </div>
+    </div>
+</div>

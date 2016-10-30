@@ -4,10 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { RawDataComponent } from "./rawdata/rawdata.component";
+import { StatusComponent } from "./status/status.component";
+import { ReversePipe } from "./pipes/reverse.pipe";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RawDataComponent,
+    StatusComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,

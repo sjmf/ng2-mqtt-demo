@@ -1,0 +1,16 @@
+{
+    "port": 8080,
+    "ssl": false,
+
+    "user": "username",
+    "pass": "changeme",
+
+    "subscribe": [
+        "Test"
+    ],
+    "publish": [
+        "Test"
+    ],
+
+    "keepalive": 10
+}
