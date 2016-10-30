@@ -9,10 +9,9 @@ version 1.0.0-beta.15 and is a re-write of my [earlier example using stomp.js](h
 be tied to one library. Well, you live and learn.)
 
 This app demonstrates a more ng2-faithful way of connecting to a message 
-queue and subscribing to messages from a message queue via MQTT, 
-includes an MQService which subscribes to messages, and an example 
-'raw data' component which uses the Observable type to data-bind
-messages to the DOM.
+queue and subscribing to messages via MQTT. It includes an MQService 
+which subscribes to messages, and an example 'raw data' component which 
+uses the Observable type to data-bind messages to the DOM.
 
 
 ## Quick Start 
