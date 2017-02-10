@@ -1,10 +1,10 @@
 # MQTT Angular 2 Demo App
 
-> A demo application using [Angular 2](https://github.com/angular/angular)+
+> A demo application using [Angular 2](https://github.com/angular/angular),
 [Typescript](https://github.com/Microsoft/TypeScript), and 
 [mqtt.js](https://github.com/mqttjs/MQTT.js). This project uses 
 [angular-cli](https://github.com/angular/angular-cli) 
-version 1.0.0-beta.15 and is a re-write of my [earlier example using stomp.js](https://github.com/sjmf/ng2-stompjs-demo)
+and is a re-write of my [earlier example using stomp.js](https://github.com/sjmf/ng2-stompjs-demo)
 (where I really should have foreseen that the transport doesn't need to 
 be tied to one library. Well, you live and learn.)
 
@@ -25,14 +25,13 @@ and the necessary dependencies:
 ```bash
 # Clone the repo and cd into it
 git clone https://github.com/sjmf/ng2-mqtt-demo
+# cd into it
 cd ng2-mqtt-demo
-# Install angular-cli
-npm install -g angular-cli
 # Install the packages from package.json
 npm install
 ```
 
-You will also need to edit the `src/assets/api/config.json` configuration 
+You will also need to edit the `src/api/config.json` configuration 
 file to set the correct connection parameters for your message broker. 
 This file is included with the idea that in a production app, you might 
 want to get credentials for a connection from an API. See the 
@@ -46,44 +45,51 @@ automatically reload if you change any of the source files.
 
 ## Layout
 
-The source is located under the `app` folder. Partial tree is below
-(I've excluded a lot of angular-cli's boilerplate):
+The source is located under the `app` folder. Partial tree is below:
 
 ```
-src                                  * Source folder
-├── app                              
-│   ├── app.component.css            * Top-level app component
-│   ├── app.component.html           
-│   ├── app.component.ts             
-│   ├── app.module.ts                * App NgModule definition
-│   ├── index.ts                     
-│   ├── pipes                        * Pipes used in the application
-│   │   └── reverse.pipe.ts          
-│   ├── rawdata                      * RawDataComponent viewer which
-│   │   ├── rawdata.component.css      renders messages in a div so 
-│   │   ├── rawdata.component.html     that you can see them
-│   │   └── rawdata.component.ts     
-│   ├── services                     
-│   │   ├── config.service.ts        * Service to retrieve user config
-│   │   ├── config.ts                * Type definition for MQTT config
-│   │   ├── mqtt.service.ts          * MQTT ng2 service definition
-│   │   └── transport.service.ts     
-│   ├── shared                       
-│   │   └── index.ts                 
-│   └── status                       * Status component (states like
-│       ├── status.component.css       TRYING, CONNECTED, DISCONNECTED,
-│       ├── status.component.html      and so on)
-│       ├── status.component.spec.ts 
-│       └── status.component.ts      
-├── assets                           
-│   └── api                          
-│       └── config.json              * Configuration file for MQTT broker
-└── index.html                       * App page served to browser
+├── src                                          * Source folder
+│   ├── api                                      * Example API folder (static for demo)
+│   │   └── config.json                          * Configuration file for STOMP
+│   │
+│   ├── app                                      * Application folder
+│   │   ├── components                           * Components folder
+│   │   │   ├── rawdata                          * Example data streaming component folder
+│   │   │   └── status                           * STOMP Status component folder
+│   │   │
+│   │   ├── services                             * Services folder
+│   │   │   ├── config                           * Config service folder (retrieves the configuration)
+│   │   │   └── stomp                            * STOMP service folder (ng2 definition for a STOMP configuration)
+│   │   │
+│   │   ├── app.component.css                    * Component css file
+│   │   ├── app.component.html                   * Component html file
+│   │   ├── app.component.spec.ts                * Component testings
+│   │   ├── app.component.ts                     * Top-level app-root component
+│   │   ├── app.module.ts                        * App module definition
+│   │   └── index.ts                             * Indexing file
+│   │
+│   ├── assets                                   * Assets folder
+│   │   └── .gitkeep                             * Placeholder to include the folder to source control
+│   │
+│   ├── environments                             * Environment settings folder
+│   │   ├── environment.prod.ts                  * Production environment settings
+│   │   └── environment.ts                       * Development environment settings
+│   │
+│   ├── index.html                               * The root page served to browser
+│   ├── main.ts                                  * App bootstrap
+│   ├── styles.css                               * Main css file
+│   ├── tsconfig.json                            * Typescript transpiler options 
+│   └── typings.d.ts                             * Typescript typings definition file
+│
+├── angular-cli.json                             * Angular CLI configuration file
+├── package.json                                 * Package info and list of dependencies to install
+└── tslint.json                                  * Typescript Linter configuration file
 ```
 
-Two extra directories will be generated: `dist` for the compiled app, and 
-`node_modules`, for installed node packages. I've excluded the test
-directories because I haven't written any tests. ;)
+> Excluded from this partial tree for brevity: sub-component `.ts` `.html` etc 
+files under folders, testing framework files, and the `e2e` End to End testing 
+folder containing app behaviour testings and definitions. The `node_modules` 
+directory will also be generated for the installed node packages.)
 
 
 ## Extending
