@@ -1,11 +1,11 @@
-import { browser, element, by } from 'protractor/globals';
+import { browser, element, by } from 'protractor';
 
-export class Ui2Page {
+export class Ng2MQTTDemoPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
+  getHeaderText() {
     return element(by.css('app-root h1')).getText();
   }
 }

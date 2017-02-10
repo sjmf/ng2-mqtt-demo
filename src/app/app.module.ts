@@ -4,9 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { RawDataComponent } from "./rawdata/rawdata.component";
-import { StatusComponent } from "./status/status.component";
-import { ReversePipe } from "./pipes/reverse.pipe";
+import { RawDataComponent } from './components/rawdata/rawdata.component';
+import { StatusComponent } from './components/status/status.component';
+import { ReversePipe } from './pipes/reverse.pipe';
+
+import { ConfigService } from './services/config/config.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { ReversePipe } from "./pipes/reverse.pipe";
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
