@@ -8,9 +8,9 @@
     <h3 *ngIf="count">Latest:</h3>
     <pre>{{messages | async}}</pre>
 
-    <div class="panel panel-default">
+    <div *ngIf="mq.length" class="panel panel-default">
         <div class="panel-heading">
-            <span *ngIf="mq.length">History:</span>
+            <span>History:</span>
         </div>
         <div class="panel-body" class="debug-mq-panel">
             <ol reversed>
