@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Packet } from 'mqtt';
 
-import { MQService } from '../../services/mqtt';
+import { MQTTService } from '../../services/mqtt';
 import { ConfigService } from '../../services/config/config.service';
 
 /**
@@ -21,7 +21,7 @@ import { ConfigService } from '../../services/config/config.service';
   selector: 'app-rawdata',
   templateUrl: './rawdata.component.html',
   styleUrls: ['./rawdata.component.css'],
-  providers: [MQService, ConfigService]
+  providers: [MQTTService, ConfigService]
 })
 export class RawDataComponent implements OnInit, OnDestroy {
 
@@ -35,7 +35,7 @@ export class RawDataComponent implements OnInit, OnDestroy {
   public count = 0;
 
   /** Constructor */
-  constructor(private _mqService: MQService,
+  constructor(private _mqService: MQTTService,
     private _configService: ConfigService) { }
 
   ngOnInit() {
