@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { RawDataComponent } from './rawdata.component';
 import { StatusComponent } from '../../components/status/status.component';
-import { MQService } from '../../services/mqtt';
+import { MQTTService } from '../../services/mqtt';
 import { ConfigService } from '../../services/config/config.service';
 import { ReversePipe } from '../../pipes/reverse.pipe';
 
@@ -26,7 +26,7 @@ describe('RawDataComponent', () => {
         HttpModule
       ],
       providers: [
-        MQService,
+        MQTTService,
         ConfigService
       ]
     })

@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { MQService } from './mqtt.service';
+import { MQTTService } from './mqtt.service';
 
 describe('Service: MQ', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MQService]
+      providers: [MQTTService]
     });
   });
 
-  it('should ...', inject([MQService], (service: MQService) => {
+  it('should ...', inject([MQTTService], (service: MQTTService) => {
     expect(service).toBeTruthy();
   }));
 });

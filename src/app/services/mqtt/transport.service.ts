@@ -14,35 +14,35 @@ export enum TransportState {
 }
 
 /* Interface which MQ Transports must implement */
-export interface TransportService {
+export abstract class TransportService {
 
   // State of the TransportService implementer
-  state: BehaviorSubject<TransportState>;
+  abstract state: BehaviorSubject<TransportState>;
 
   // Publishes new messages to Observers
-  messages: Subject<Object>;
+  abstract messages: Subject<Object>;
 
   /** Callback run on successfully connecting to server */
-  on_connect: () => void;
+  abstract on_connect: () => void;
 
   /** On message RX, notify the Observable with the message object */
-  on_message: (...args: any[]) => void;
+  abstract on_message: (...args: any[]) => void;
 
   /** Handle errors */
-  on_error: (error: any) => void;
+  abstract on_error: (error: any) => void;
 
   /** Set up configuration */
-  configure(config?: Config): void;
+  abstract configure(config?: Config): void;
 
   /** Perform connection to broker, returning a Promise resolved when connected */
-  try_connect(): Promise<{}>;
+  abstract try_connect(): Promise<{}>;
 
   /** Disconnect the client and clean up */
-  disconnect(): void;
+  abstract disconnect(): void;
 
   /** Send a message to all topics, or just those in the array */
-  publish(message?: string): void;
+  abstract publish(message?: string): void;
 
   /** Subscribe to server message queues */
-  subscribe(): void;
+  abstract subscribe(): void;
 }

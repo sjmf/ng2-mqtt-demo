@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { MQService, StateLookup } from '../../services/mqtt';
+import { MQTTService, StateLookup } from '../../services/mqtt';
 
 /**
  * MQ connection status as a component
@@ -14,7 +14,7 @@ export class StatusComponent implements OnInit {
 
   public state: Observable<string>;
 
-  constructor(private _mqService: MQService) { }
+  constructor(private _mqService: MQTTService) { }
 
   ngOnInit() {
     console.log('Status init');
