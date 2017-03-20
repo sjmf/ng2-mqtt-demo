@@ -57,9 +57,11 @@ The source is located under the `app` folder. Partial tree is below:
 │   │   │   ├── rawdata                          * Example data streaming component folder
 │   │   │   └── status                           * STOMP Status component folder
 │   │   │
+│   │   ├── pipes                                * Pipes folder
+│   │   │
 │   │   ├── services                             * Services folder
 │   │   │   ├── config                           * Config service folder (retrieves the configuration)
-│   │   │   └── stomp                            * STOMP service folder (ng2 definition for a STOMP configuration)
+│   │   │   └── mqtt                             * MQTT service folder (ng2 definition for an MQTT configuration)
 │   │   │
 │   │   ├── app.component.css                    * Component css file
 │   │   ├── app.component.html                   * Component html file
@@ -77,12 +79,14 @@ The source is located under the `app` folder. Partial tree is below:
 │   │
 │   ├── index.html                               * The root page served to browser
 │   ├── main.ts                                  * App bootstrap
+│   ├── polyfills.ts                             * Polyfills file
 │   ├── styles.css                               * Main css file
-│   ├── tsconfig.json                            * Typescript transpiler options 
+│   ├── tsconfig.app.json                        * App Typescript transpiler options
 │   └── typings.d.ts                             * Typescript typings definition file
 │
-├── angular-cli.json                             * Angular CLI configuration file
+├── .angular-cli.json                            * Angular CLI configuration file
 ├── package.json                                 * Package info and list of dependencies to install
+├── tsconfig.json                                * Main Typescript transpiler options
 └── tslint.json                                  * Typescript Linter configuration file
 ```
 
