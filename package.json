@@ -22,7 +22,7 @@
     "@angular/router": "^4.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
-    "mqtt": "^1.14.1",
+    "mqtt": "^2.6.2",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
@@ -30,7 +30,6 @@
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
-    "@types/mqtt": "^0.0.32",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",

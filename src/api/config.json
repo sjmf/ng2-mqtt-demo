@@ -1,9 +1,10 @@
 {
-    "port": 61614,
+    "port": 15675,
+    "path": "ws",
     "ssl": false,
 
-    "user": "username",
-    "pass": "changeme",
+    "user": "guest",
+    "pass": "guest",
 
     "subscribe": [
         "Test"

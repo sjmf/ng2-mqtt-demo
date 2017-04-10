@@ -5,9 +5,11 @@
  */
 export interface Config {
   // Which server?
-  host: string;
-  port: number;
-  ssl: boolean;
+  host: string;   // 'localhost' or '127.0.0.1'
+  port: number;   // 15675
+  path: string;   // 'ws'
+
+  ssl: boolean;   // false
 
   // What credentials?
   user: string;
