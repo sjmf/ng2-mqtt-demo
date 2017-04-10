@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { MQTTService, StateLookup } from '../../services/mqtt';
+import { MQTTService } from '../../services/mqtt';
+import { TransportState } from "../../services/mqtt/transport.service";
 
 /**
  * MQ connection status as a component
@@ -19,7 +20,7 @@ export class StatusComponent implements OnInit {
   ngOnInit() {
     console.log('Status init');
     this.state = this._mqService.state
-      .map((state: number) => StateLookup[state]);
+      .map((state: number) => TransportState[state]);
   }
 
 }

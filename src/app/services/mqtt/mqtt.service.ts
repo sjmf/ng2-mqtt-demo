@@ -9,14 +9,6 @@ import { TransportService, TransportState } from './transport.service';
 
 import * as mqtt from 'mqtt';
 
-/** look up states for the message queue */
-export const StateLookup: string[] = [
-  'CLOSED',
-  'TRYING',
-  'CONNECTED',
-  'SUBSCRIBED',
-  'DISCONNECTING'
-];
 
 /**
  * Angular2 Message Queue Service using MQTT.js
