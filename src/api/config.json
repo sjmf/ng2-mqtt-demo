@@ -1,5 +1,6 @@
 {
     "port": 15675,
+    "path": "ws",
     "ssl": false,
 
     "user": "guest",
