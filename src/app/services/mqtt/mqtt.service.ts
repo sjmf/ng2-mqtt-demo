@@ -95,7 +95,7 @@ export class MQTTService implements TransportService {
     if (this.config.ssl) { scheme = 'wss'; }
 
     // Client options loaded from config
-    const options: mqtt.ClientOptions = {
+    const options: mqtt.IClientOptions = {
       'keepalive': this.config.keepalive,
       'reconnectPeriod': 10000,
       'clientId': 'clientid_' + Math.floor(Math.random() * 65535),
